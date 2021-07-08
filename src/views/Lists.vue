@@ -12,12 +12,10 @@
                                 <ion-icon :icon="clipboard" color="primary" size="large"></ion-icon>
                             </ion-card-header>             
 
-                            <ion-card-header>
                                 <ion-card-content>
                                     <ion-card-title class="text-2xl">All</ion-card-title>
                                     <ion-card-subtitle>Tasks</ion-card-subtitle>
-                                </ion-card-content>
-                            </ion-card-header>                        
+                                </ion-card-content>                
                     </router-link>
                 </ion-card>         
             
@@ -27,12 +25,10 @@
                                 <ion-icon :icon="briefcase" size="large" class="text-yellow-800"></ion-icon>
                             </ion-card-header>             
 
-                            <ion-card-header>
                                 <ion-card-content>
                                     <ion-card-title class="text-2xl">Work</ion-card-title>
                                     <ion-card-subtitle>Tasks</ion-card-subtitle>
-                                </ion-card-content>
-                            </ion-card-header>                        
+                                </ion-card-content>                   
                     </router-link>
                 </ion-card>
                 
@@ -42,12 +38,10 @@
                                 <ion-icon :icon="headset" size="large" class="text-red-400"></ion-icon>
                             </ion-card-header>             
 
-                            <ion-card-header>
                                 <ion-card-content>
                                     <ion-card-title class="text-2xl">Music</ion-card-title>
                                     <ion-card-subtitle>Tasks</ion-card-subtitle>
-                                </ion-card-content>
-                            </ion-card-header>                        
+                                </ion-card-content>          
                     </router-link>
                 </ion-card>
                          
@@ -57,12 +51,10 @@
                                 <ion-icon :icon="airplane" size="large" class="text-green-400"></ion-icon>
                             </ion-card-header>             
 
-                            <ion-card-header>
                                 <ion-card-content>
                                     <ion-card-title class="text-2xl">Travel</ion-card-title>
                                     <ion-card-subtitle>Tasks</ion-card-subtitle>
-                                </ion-card-content>
-                            </ion-card-header>                        
+                                </ion-card-content>                  
                     </router-link>
                 </ion-card>
 
@@ -72,12 +64,10 @@
                                 <ion-icon :icon="book" size="large" class="text-indigo-400"></ion-icon>
                             </ion-card-header>             
 
-                            <ion-card-header>
                                 <ion-card-content>
                                     <ion-card-title class="text-2xl">Study</ion-card-title>
                                     <ion-card-subtitle>Tasks</ion-card-subtitle>
-                                </ion-card-content>
-                            </ion-card-header>                        
+                                </ion-card-content>               
                     </router-link>
                 </ion-card>
             
@@ -87,12 +77,10 @@
                                 <ion-icon :icon="home" size="large"  style="color:#2DD4BF"></ion-icon>
                             </ion-card-header>             
 
-                            <ion-card-header>
                                 <ion-card-content>
                                     <ion-card-title class="text-2xl">Home</ion-card-title>
                                     <ion-card-subtitle>Tasks</ion-card-subtitle>
-                                </ion-card-content>
-                            </ion-card-header>                        
+                                </ion-card-content>                   
                     </router-link>
                 </ion-card>
             
@@ -102,12 +90,10 @@
                                 <ion-icon :icon="football" size="large"  class="text-gray-900"></ion-icon>
                             </ion-card-header>             
 
-                            <ion-card-header>
                                 <ion-card-content>
                                     <ion-card-title class="text-2xl">Sport</ion-card-title>
                                     <ion-card-subtitle>Tasks</ion-card-subtitle>
-                                </ion-card-content>
-                            </ion-card-header>                        
+                                </ion-card-content>               
                     </router-link>
                 </ion-card>
             
@@ -117,32 +103,55 @@
                                 <ion-icon :icon="cart" size="large"  style="color:#115E59"></ion-icon>
                             </ion-card-header>             
 
-                            <ion-card-header>
                                 <ion-card-content>
                                     <ion-card-title class="text-2xl">Shopping</ion-card-title>
                                     <ion-card-subtitle>Tasks</ion-card-subtitle>
-                                </ion-card-content>
-                            </ion-card-header>                        
+                                </ion-card-content>        
                     </router-link>
                 </ion-card>
-
+        
              </div>
+            <div>
+                    <ion-fab @click="isOpenNewTask = true" vertical="bottom" horizontal="end" slot="fixed">
+                        <ion-fab-button>
+                            <ion-icon :icon="add">
+                            </ion-icon>
+                        </ion-fab-button>
+                    </ion-fab>
+
+                    <ion-modal
+                    :is-open="isOpenNewTask"
+                    :backdrop-dismiss="false">
+
+                    <new-task @closeModal="isOpenNewTask= false"></new-task>
+                    <h1 class="text-2xl"> Modal  </h1>
+                    </ion-modal>
+
+
+
+            </div>
             </div>
     </ion-page>
 </template>
 
-<script>
-import  {defineComponent}  from  'vue';
-import { IonPage,IonCard,IonCardHeader,IonIcon,IonCardContent,IonCardTitle,IonCardsubTitle}  from  '@ionic/vue'; 
-import { clipboard, briefcase, headset,airplane, book,home,football,cart } from 'ionicons/icons';
+<script> 
+import  {defineComponent, ref}  from  'vue';
+import { IonPage,IonCard,IonCardHeader,IonIcon,IonCardContent,IonCardTitle,
+IonCardSubtitle,IonFab,IonFabButton,IonModal} from '@ionic/vue'; 
+import { clipboard, briefcase, headset,airplane, book,home,football,cart,add } from 'ionicons/icons';
+import NewTask from '@/components/NewTask.vue';
 export default defineComponent({
     components:{
-        IonPage,IonCard,IonCardHeader,IonIcon,IonIcon,IonCardContent,IonCardTitle,IonCardsubTitle
+        IonPage,IonCard,IonCardHeader,IonIcon,IonCardContent,IonCardTitle,
+        IonCardSubtitle,IonFab,IonFabButton,IonModal,NewTask
     },
 
     setup(){
+
+        const isOpenNewTask = ref(false);
         return{
-            clipboard,  briefcase ,headset, airplane, book,  home,  football,  cart
+            isOpenNewTask, clipboard, briefcase , headset,
+            airplane, book, home, football, cart, add
         }
     }
 

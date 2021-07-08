@@ -1,5 +1,8 @@
 <template>
   <ion-page>
+      <h1>
+          Home
+      </h1>
   </ion-page>
 </template>
 
