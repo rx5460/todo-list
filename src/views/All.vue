@@ -1,11 +1,13 @@
 <template>
-  <ion-page>
-  </ion-page>
+    <ion-page>
+        <h1>All</h1>
+    </ion-page>
+  
 </template>
-
 <script>
 import  {defineComponent}  from  'vue';
-import { IonPage  }  from  '@ionic/vue'; 
+import { IonPage }  from  '@ionic/vue'; 
+
 export default defineComponent({
     components:{
         IonPage
@@ -13,14 +15,11 @@ export default defineComponent({
 
     setup(){
         return{
-
         }
     }
 
-})
+})  
 </script>
-
 <style>
 
 </style>
-
