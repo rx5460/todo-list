@@ -13,7 +13,7 @@
                             </ion-card-header>             
 
                                 <ion-card-content>
-                                    <ion-card-title class="text-2xl">All</ion-card-title>
+                                    <ion-card-title class="text-3xl">All</ion-card-title>
                                     <ion-card-subtitle>Tasks</ion-card-subtitle>
                                 </ion-card-content>                
                     </router-link>
@@ -127,10 +127,9 @@
                     <h1 class="text-2xl"> Modal  </h1>
                     </ion-modal>
 
-
-
             </div>
-            </div>
+        
+        </div>
     </ion-page>
 </template>
 

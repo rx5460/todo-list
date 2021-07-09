@@ -20,12 +20,17 @@ import '@ionic/vue/css/text-transformation.css';
 import '@ionic/vue/css/flex-utils.css';
 import '@ionic/vue/css/display.css';
 
+/* Tailwindcss */
+import '../public/assets/css/style.css';
 /* Theme variables */
 import './theme/variables.css';
 import '../public/assets/css/style.css';
+
+import store from './store/index';
 const app = createApp(App)
   .use(IonicVue)
-  .use(router);
+  .use(router)
+  .use(store);
   
 router.isReady().then(() => {
   app.mount('#app');
