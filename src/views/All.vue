@@ -148,7 +148,6 @@
     </ion-page>  
 </template>
 <script>
-
 import  {defineComponent, ref, reactive, computed, onMounted}  from  'vue';
 import { IonPage, IonToolbar,IonButtons,IonBackButton,IonIcon, IonContent,
 IonCardTitle,IonCardSubtitle,IonListHeader,IonItemSliding,IonItemOptions,IonItemOption,
@@ -156,7 +155,6 @@ IonLabel,IonList,IonItem,IonFab,IonFabButton,IonModal}  from  '@ionic/vue';
 import {ellipsisVertical,clipboard,trash,add  } from 'ionicons/icons';
 import NewTask from '@/components/NewTask.vue';
 import {useStore} from 'vuex';
-
 export default defineComponent({
     components:{IonPage,IonToolbar,IonButtons,IonBackButton,IonIcon,IonContent,
        IonCardTitle,IonCardSubtitle,IonListHeader,IonItemSliding,
@@ -164,16 +162,14 @@ export default defineComponent({
        IonFab,IonFabButton,IonModal,
        NewTask 
     },
-
-
     setup(){
         const isOpenNewTask= ref(false);
         const store = useStore();
         const state = reactive({
+            
             tasks: computed(() => {
                 return store.state.tasks;
             }),
-
             today: computed(() => {
                 return store.getters.today(state.tasks);
             }),
@@ -194,7 +190,6 @@ export default defineComponent({
         function getTasks() {
             store.commit('getTasks');
         }
-
         onMounted(() => {
             getTasks();
         })
@@ -203,9 +198,7 @@ export default defineComponent({
             ellipsisVertical,clipboard,trash,add
         }
     }
-
 })  
 </script>
 <style>
-
 </style>
